@@ -31,6 +31,12 @@ jobs:
       - name: 📦 Install dependencies
         run: flutter pub get
 
+      - name: 🛠️ Fix Gradle
+        run: |
+          sed -i 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 34/g' android/app/build.gradle
+          sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 21/g' android/app/build.gradle
+          sed -i 's/targetSdkVersion flutter.targetSdkVersion/targetSdkVersion 34/g' android/app/build.gradle
+
       - name: 🧹 Clean project
         run: flutter clean
 
